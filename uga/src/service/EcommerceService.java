@@ -43,7 +43,7 @@ public class EcommerceService {
         String fullName = scanner.nextLine();
 
         System.out.println("Enter username: ");
-        String username = scanner.next();
+        String username = scanner.nextLine();
 
         // Uniqui username check
         while (existingUsernames.contains(username)) {
@@ -67,13 +67,13 @@ public class EcommerceService {
             newUser = new Admin(username, password); // create admin user
         }
 
-        Account newAccount = new Account(newUser, role);
+        
+        Account newAccount = new Account(username, password, fullName, role);
         System.out.println("Account created successfully! ID: " + newAccount.getAccountId());
     }
 
     public void processUserOptions(Account account) {
         Cart cart = new Cart();
-        
 
         while (true) {
             System.out.println("------------------------");
