@@ -14,6 +14,7 @@ import java.util.Set;
 public class EcommerceService {
     private Scanner scanner = new Scanner(System.in);
     private Set<String> existingUsernames = new HashSet<>();
+    private Account currentAccount;
 
     public Account login() {
         System.out.println("Enter username: ");
@@ -72,6 +73,7 @@ public class EcommerceService {
 
     public void processUserOptions(Account account) {
         Cart cart = new Cart();
+        
 
         while (true) {
             System.out.println("------------------------");

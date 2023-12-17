@@ -31,6 +31,10 @@ public class Account {
     public int getAccountId() {
         return accountId;
     }
+
+    public Account getUser() {
+        return null;
+    }
     
 
     // Outros métodos conforme necessário
