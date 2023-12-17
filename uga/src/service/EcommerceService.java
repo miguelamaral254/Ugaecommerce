@@ -15,7 +15,7 @@ import java.util.List;
 public class EcommerceService {
     private Scanner scanner = new Scanner(System.in);
     private Set<String> existingUsernames = new HashSet<>();
-    private List<Account> createdAccounts = new ArrayList<>(); // Adicione esta linha
+    private List<Account> createdAccounts = new ArrayList<>(); 
     private Account currentAccount;
 
     public Account login() {
@@ -34,14 +34,14 @@ public class EcommerceService {
     }
 
     private boolean isValidLogin(String username, String password) {
-        // Implemente a lógica real de autenticação aqui
-        // Verificar se as credenciais correspondem a uma conta existente
+        
+        
         for (Account account : createdAccounts) {
             if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
-                return true; // Credenciais válidas
+                return true; 
             }
         }
-        return false; // Credenciais inválidas
+        return false; 
     }
 
     private Account findAccountByUsername(String username) {
@@ -74,21 +74,21 @@ public class EcommerceService {
         System.out.println("Enter role (0 for customer, 1 for admin): ");
         int role = scanner.nextInt();
 
-        // Lógica fictícia de criação de conta, você deve implementar a lógica real aqui
-        // Exemplo: Criar uma nova conta no sistema
+        
+        
         User newUser;
         if (role == 1) {
-            newUser = new Admin(username, password); // cria usuário administrador
+            newUser = new Admin(username, password); 
         } else {
-            newUser = new Customer(username, password); // cria usuário cliente
+            newUser = new Customer(username, password); 
         }
 
         newUser.setFullName(fullName);
         Account newAccount = new Account(newUser, role);
-        createdAccounts.add(newAccount); // Adiciona a nova conta à lista de contas criadas
+        createdAccounts.add(newAccount); 
         System.out.println("Account created successfully! ID: " + newAccount.getAccountId());
 
-        // Chama o menu adequado com base no papel do usuário
+        
         if (role == 1) {
             displayAdminMenu();
         } else {
@@ -112,13 +112,13 @@ public class EcommerceService {
 
             switch (choice) {
                 case 1:
-                    // Implemente a lógica de adição de item ao carrinho
+                    // Implementar a lógica de adição de item ao carrinho
                     break;
                 case 2:
-                    // Implemente a lógica do carrinho
+                    // Implementar a lógica do carrinho
                     break;
                 case 3:
-                    // Implemente a lógica de edição de perfil
+                    // Implementar a lógica de edição de perfil
                     break;
                 case 4:
                     System.out.println("Logging out...");
