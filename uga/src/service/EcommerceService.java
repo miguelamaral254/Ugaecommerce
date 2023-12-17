@@ -6,16 +6,14 @@ import entities.Customer;
 import entities.User;
 import service.Cart;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
+
 import java.util.Scanner;
 import java.util.Set;
 
 public class EcommerceService {
     private Scanner scanner = new Scanner(System.in);
-        private Set<String> existingUsernames = new HashSet<>();  // Armazena os nomes de usuário existentes
-
+    private Set<String> existingUsernames = new HashSet<>();
 
     public Account login() {
         System.out.println("Enter username: ");
@@ -40,19 +38,18 @@ public class EcommerceService {
 
     public void createAccount() {
         System.out.println("Enter full name: ");
-        scanner.nextLine(); // Consumir a quebra de linha pendente
+        scanner.nextLine();
         String fullName = scanner.nextLine();
 
         System.out.println("Enter username: ");
         String username = scanner.next();
 
-        // Lógica de verificação de login único
+        // Uniqui username check
         while (existingUsernames.contains(username)) {
             System.out.println("Username already in use. Choose a different one: ");
             username = scanner.next();
         }
 
-        // Adicionar o novo nome de usuário ao conjunto
         existingUsernames.add(username);
 
         System.out.println("Enter password: ");
@@ -66,21 +63,11 @@ public class EcommerceService {
         newUser.setFullName(fullName);
 
         if (role == 1) {
-            newUser = new Admin(username, password); // Se o role for 1, cria um usuário do tipo Admin
+            newUser = new Admin(username, password); // create admin user
         }
 
         Account newAccount = new Account(newUser, role);
         System.out.println("Account created successfully! ID: " + newAccount.getAccountId());
-    }
-
-    private boolean isUsernameTaken(String newUsername) {
-        // Implemente a lógica real para verificar se o nome de usuário já está em uso
-        // Exemplo: Verificar em um banco de dados ou em uma lista de contas existentes
-
-        // Aqui, vamos simular uma lista de usuários já existentes
-        List<String> existingUsernames = Arrays.asList("existingUser");
-
-        return existingUsernames.contains(newUsername);
     }
 
     public void processUserOptions(Account account) {
