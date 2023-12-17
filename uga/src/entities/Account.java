@@ -5,29 +5,35 @@ public class Account {
     private int accountId;
     private String username;
     private String password;
-    private String fullName; // Adiciona o campo fullName
+    private String fullName;
     private int role;
+    private User user; 
 
     public Account(String username, String password, int role) {
-        this.accountId = nextAccountId++;
+        this.accountId = getNextAccountId();
         this.username = username;
         this.password = password;
         this.role = role;
+        this.user = new Customer(username, password); 
     }
 
-    
     public Account(String username, String password, String fullName, int role) {
         this.accountId = getNextAccountId();
         this.username = username;
         this.password = password;
         this.fullName = fullName;
         this.role = role;
+        this.user = (role == 1) ? new Admin(username, password) : new Customer(username, password);
     }
+
+    public Account(User newUser, int role2) {
+    }
+
     private static int getNextAccountId() {
         return nextAccountId++;
     }
 
-    // Métodos getters e setters para fullName
+    
     public String getFullName() {
         return fullName;
     }
@@ -36,7 +42,7 @@ public class Account {
         this.fullName = fullName;
     }
 
-    // Restante dos métodos getters e setters
+    
 
     public int getAccountId() {
         return accountId;
@@ -54,5 +60,7 @@ public class Account {
         return role;
     }
 
-    // Outros métodos conforme necessário
+    public User getUser() {
+        return user;
+    }
 }
